@@ -1,8 +1,12 @@
+import MainLayout from "./components/layout/MainLayout"
+import Navbar from "./components/ui/Navbar"
+
 function App() {
 
   return (
     <>
-      <h1>Welcome to PH</h1>
+      <Navbar />
+      <MainLayout />
     </>
   )
 }

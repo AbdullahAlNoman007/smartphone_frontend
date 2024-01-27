@@ -1,10 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { persistStore } from "redux-persist";
+import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, REGISTER, PURGE } from "redux-persist";
 
 export const store = configureStore({
     reducer: {
 
-    }
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            },
+        })
 })
 
 export type RootState = ReturnType<typeof store.getState>
