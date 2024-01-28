@@ -32,7 +32,7 @@ const UpdateModel = ({ phoneId, phoneName }: { phoneId: string | null, phoneName
             batteryLife
 
         }
-        const UpdatephoneInfo = Object.fromEntries(Object.entries(phoneInfo).filter(([key, value]) => value !== null));
+        const UpdatephoneInfo = Object.fromEntries(Object.entries(phoneInfo).filter(([, value]) => value !== null));
         phoneInfo = {
             id: phoneId,
             body: UpdatephoneInfo
