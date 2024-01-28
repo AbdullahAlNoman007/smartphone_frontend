@@ -12,8 +12,10 @@ import BuyerModal from "../components/ui/BuyerModal";
 import CreateMoel from "../components/ui/CreateMoel";
 
 const AllPhone = () => {
-    const { data } = useGetallphoneQuery(undefined)
+    const { data, error } = useGetallphoneQuery(undefined)
     const phones: Tproduct[] = data?.data
+    console.log(error);
+
     const [deletephone] = useDeletephoneMutation()
     const [selectedPhoneId, setSelectedPhoneId] = useState<string | null>(null);
     const [selectedPhoneName, setSelectedPhoneName] = useState<string | null>(null);
