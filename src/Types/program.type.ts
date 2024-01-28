@@ -39,3 +39,21 @@ export interface Tauth {
     user: Tuser | null;
     token: string | null
 }
+
+export interface Tproduct {
+    _id?: string;
+    name: string;
+    price: number;
+    quantity: number;
+    releaseDate?: Date;
+    brand: string;
+    model: string;
+    operatingSystem: 'andriod' | 'iOS';
+    ram: string;
+    waterResistance: boolean;
+    storageCapacity: string;
+    screenSize: string;
+    cameraQuality: string;
+    batteryLife: string;
+}
+
