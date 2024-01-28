@@ -4,6 +4,7 @@ import SideRoutes from "../../routes/routes.user";
 import { IoIosMenu } from "react-icons/io";
 
 
+
 const MainLayout = () => {
 
     return (
@@ -12,7 +13,6 @@ const MainLayout = () => {
             <label htmlFor="my-drawer-2" className="drawer-button lg:hidden ml-2"><IoIosMenu /></label>
             <div className="drawer-content flex flex-col items-center ">
                 <Outlet></Outlet>
-
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>

@@ -16,3 +16,26 @@ export type Tnavlink = {
     key: string;
     label: ReactNode
 }
+
+export type Tregister = {
+    name: string;
+    email: string;
+    password: string;
+    confirmpassword: string;
+}
+export type Tlogin = {
+    email: string;
+    password: string;
+}
+
+export type Tuser = {
+    userId: string;
+    role: string;
+    iat: number;
+    exp: number;
+}
+
+export interface Tauth {
+    user: Tuser | null;
+    token: string | null
+}
