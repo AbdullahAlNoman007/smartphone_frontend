@@ -17,12 +17,12 @@ const CreateMoel = ({ phone }: { phone: any }) => {
             brand: data.brand,
             model: data.model,
             operatingSystem: data.operatingSystem,
-            ram: `${data.ram}GB`,
+            ram: `${data.ram}`,
             waterResistance: data.waterResistance,
-            storageCapacity: `${data.storageCapacity}GB`,
-            screenSize: `${data.screenSize} inches`,
-            cameraQuality: `${data.cameraQuality} MP`,
-            batteryLife: `${data.batteryLife} hours`
+            storageCapacity: `${data.storageCapacity}`,
+            screenSize: `${data.screenSize}`,
+            cameraQuality: `${data.cameraQuality}`,
+            batteryLife: `${data.batteryLife}`
         };
 
         try {

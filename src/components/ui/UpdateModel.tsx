@@ -57,7 +57,7 @@ const UpdateModel = ({ phoneId, phoneName }: { phoneId: string | null, phoneName
         <dialog id="my_modal_1" className="modal">
             <div className="modal-box">
                 <form onSubmit={handleSubmit(onSubmit)} className="border-2 px-10 py-16 rounded-lg w-full ">
-                    <h1 className="text-center text-3xl font-medium">Create A New Phone</h1>
+                    <h1 className="text-center text-3xl font-medium">Update Phone</h1>
                     <div className="flex justify-around ">
                         <div className="m-2">
                             <label className="form-control w-full max-w-sm">
