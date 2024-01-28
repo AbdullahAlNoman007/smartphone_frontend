@@ -11,12 +11,12 @@ import { useLoginMutation } from "../redux/features/auth/authApi";
 const Login = () => {
     const dispatch = useAppDispatch()
     const { register, formState: { errors }, handleSubmit } = useForm()
-    const [login, { error }] = useLoginMutation()
+    const [login] = useLoginMutation()
     const nagivate = useNavigate()
     const onSubmit = async (loginData: FieldValues) => {
 
         const toastId = toast.loading('Logging in')
-        console.log(error);
+
 
 
         try {

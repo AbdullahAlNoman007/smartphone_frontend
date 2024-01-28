@@ -9,9 +9,24 @@ const CreateMoel = ({ phone }: { phone: any }) => {
     const [createphone] = useCreatephoneMutation()
     const navigate = useNavigate()
     const onSubmit = async (data: any) => {
+        const phoneInfo = {
+            name: data.name,
+            price: Number(data.price),
+            quantity: Number(data.quantity),
+            releaseDate: (new Date()).toISOString(),
+            brand: data.brand,
+            model: data.model,
+            operatingSystem: data.operatingSystem,
+            ram: `${data.ram}GB`,
+            waterResistance: data.waterResistance,
+            storageCapacity: `${data.storageCapacity}GB`,
+            screenSize: `${data.screenSize} inches`,
+            cameraQuality: `${data.cameraQuality} MP`,
+            batteryLife: `${data.batteryLife} hours`
+        };
 
         try {
-            const res = await createphone(data).unwrap()
+            const res = await createphone(phoneInfo).unwrap()
             const success = res.success
 
             if (!success) {
