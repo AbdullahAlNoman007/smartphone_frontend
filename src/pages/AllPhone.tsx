@@ -67,6 +67,7 @@ const AllPhone = () => {
                             <th>Camera</th>
                             <th>RAM</th>
                             <th>ROM</th>
+                            <th>QUANTITY</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,6 +81,7 @@ const AllPhone = () => {
                                         <td>{phone.cameraQuality}</td>
                                         <td>{phone.ram}</td>
                                         <td>{phone.storageCapacity}</td>
+                                        <td>{phone.quantity}</td>
                                         <td><button className="size-8" onClick={() => openModal(phone._id as string)}><FaCartShopping /></button></td>
                                         <BuyerModal id={selectedPhoneId as string} />
                                         <td><button className="size-8" onClick={() => showModal(phone._id as string, phone.name as string)}><CiEdit /></button></td>

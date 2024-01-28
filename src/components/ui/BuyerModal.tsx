@@ -12,7 +12,7 @@ const BuyerModal = ({ id }: { id: string }) => {
             body: {
                 quantity: Number(data.quantity),
                 buyerName: data.name,
-                saleDate: (new Date()).toISOString()
+                saleDate: data.saleDate
             }
         }
 
@@ -66,6 +66,23 @@ const BuyerModal = ({ id }: { id: string }) => {
                             />
                             {errors.quantity?.type === "required" && (
                                 <p role="alert" className="mt-2 text-red-500">Quantity is required</p>
+                            )}
+                        </label>
+                    </div>
+                    <div className="m-2">
+                        <label className="form-control w-full max-w-sm">
+                            <div className="label">
+                                <span className="label-text">Sale Date</span>
+                            </div>
+                            <input
+                                type="text"
+                                id="saledate"
+                                placeholder="Enter date (YYYY-MM-DD)"
+                                className="input input-bordered w-full max-w-sm"
+                                {...register('saleDate', { required: true })}
+                            />
+                            {errors.saleDate?.type === "required" && (
+                                <p role="alert" className="mt-2 text-red-500">saleDate is required</p>
                             )}
                         </label>
                     </div>
