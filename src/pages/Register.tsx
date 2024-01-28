@@ -1,7 +1,7 @@
 import { FieldValues, useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useRegistrationMutation } from "../redux/features/auth/authApi";
 import { toast } from "sonner";
+import { useRegistrationMutation } from "../redux/features/auth/authApi";
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm()

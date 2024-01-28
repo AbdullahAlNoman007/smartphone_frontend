@@ -3,11 +3,13 @@ import { Tproduct } from "../Types";
 import { useDeletephoneMutation, useGetallphoneQuery } from "../redux/features/getPhone/getPhoneApi";
 import { CiEdit } from "react-icons/ci";
 import { FaCartShopping } from "react-icons/fa6";
+import { IoDuplicate } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import { toast } from "sonner";
 import UpdateModel from "../components/ui/UpdateModel";
 import { useState } from "react";
 import BuyerModal from "../components/ui/BuyerModal";
+import CreateMoel from "../components/ui/CreateMoel";
 
 const AllPhone = () => {
     const { data } = useGetallphoneQuery(undefined)
@@ -15,6 +17,7 @@ const AllPhone = () => {
     const [deletephone] = useDeletephoneMutation()
     const [selectedPhoneId, setSelectedPhoneId] = useState<string | null>(null);
     const [selectedPhoneName, setSelectedPhoneName] = useState<string | null>(null);
+    const [edit, setEdit] = useState()
 
     const deletePhone = async (phoneId: string) => {
         const isDelete = confirm('Are you sure?')
@@ -54,6 +57,16 @@ const AllPhone = () => {
         }
 
     };
+    const displayModal = (any: any) => {
+        const modalElement = document.getElementById('my_modal_3');
+        setEdit(any)
+        if (modalElement instanceof HTMLDialogElement) {
+            modalElement.showModal();
+        } else {
+            console.error('Modal element not found or is not of type HTMLDialogElement');
+        }
+
+    };
 
     return (
         <div className="w-full p-10">
@@ -86,6 +99,8 @@ const AllPhone = () => {
                                         <BuyerModal id={selectedPhoneId as string} />
                                         <td><button className="size-8" onClick={() => showModal(phone._id as string, phone.name as string)}><CiEdit /></button></td>
                                         <UpdateModel phoneId={selectedPhoneId} phoneName={selectedPhoneName}></UpdateModel>
+                                        <td><button className="size-8" onClick={() => displayModal(phone)}><IoDuplicate /></button></td>
+                                        <CreateMoel phone={edit} />
                                         <td><button className="size-8" onClick={() => deletePhone(phone._id as string)}><MdDelete /></button></td>
                                     </tr>
 

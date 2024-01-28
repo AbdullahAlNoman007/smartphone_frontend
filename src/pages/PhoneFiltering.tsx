@@ -4,7 +4,7 @@ import { toast } from "sonner";
 
 const PhoneFiltering = () => {
     const [minValue, setMinValue] = useState<number>(250);
-    const [maxValue, setMaxValue] = useState<number>(700);
+    const [maxValue, setMaxValue] = useState<number>(1500);
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [storage, setstorage] = useState<string>('');
     const [screen, setscreen] = useState<string>('');
@@ -30,7 +30,7 @@ const PhoneFiltering = () => {
 
     const constructUrl = () => {
         const filters = [];
-        if (operating) {
+        if (operating && operating !== 'null') {
             filters.push(`operatingSystem=${operating}`);
         }
 
@@ -52,12 +52,16 @@ const PhoneFiltering = () => {
         const queryString = filters.join('&');
 
         const url = queryString ? `?${queryString}` : '';
+        console.log(url);
+
 
         return url;
     };
 
-    const { data } = useGetphoneQuery(constructUrl())
+    const { data, error } = useGetphoneQuery(constructUrl())
     const phones = data?.data
+    console.log(error);
+
 
     try {
 
@@ -72,33 +76,30 @@ const PhoneFiltering = () => {
         toast.error(error?.data?.errorMessage)
     }
 
-
-
-
-
     return (
         <div className="w-full">
             <form className="m-10 border-2 p-10 rounded-lg ">
                 <h1 className="text-center text-2xl mb-10">Phone filter</h1>
-                <div className="flex items-center justify-around ">
+                <div className="flex items-center justify-around flex-col lg:flex-row">
                     <div className="flex gap-5 w-full max-w-sm">
-                        <input type="range" id='min' min={0} max={1000} value={minValue} className="range" onChange={handleMinChange} />
+                        <input type="range" id='min' min={0} max={1000} value={minValue} step={50} className="range" onChange={handleMinChange} />
                         <label htmlFor="min">Min: {minValue}</label>
                     </div>
                     <div className="flex gap-5 w-full max-w-sm">
-                        <input type="range" id='max' min={500} max={2000} value={maxValue} className="range" onChange={handleMaxChange} />
+                        <input type="range" id='max' min={500} max={5000} value={maxValue} step={50} className="range" onChange={handleMaxChange} />
                         <label htmlFor="max">Max: {maxValue}</label>
                     </div>
                     <div className="flex flex-row gap-1 ">
                         <input type="text" placeholder="Search" className="input input-bordered w-full max-w-sm" onChange={handleSearchChange} />
                     </div>
                 </div>
-                <div className="flex items-center justify-around ">
+                <div className="flex items-center justify-around flex-col lg:flex-row">
                     <label className="form-control  flex flex-row  gap-2 my-5">
                         <div className="label">
                             <span className="label-text text-lg">Operating System</span>
                         </div>
                         <select className="select select-bordered" onChange={(e) => setOperating(e.target.value)} >
+                            <option value='null'>None</option>
                             <option value='andriod'>Andriod</option>
                             <option value='iOS'>iOS</option>
                         </select>

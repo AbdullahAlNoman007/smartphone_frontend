@@ -1,6 +1,7 @@
 import { Troutes } from "../Types";
 import AddPhone from "../pages/AddPhone";
 import AllPhone from "../pages/AllPhone";
+import DeletePhone from "../pages/DeletePhone";
 import PhoneFiltering from "../pages/PhoneFiltering";
 import SaleHistory from "../pages/SaleHistory";
 import ProtectedRoute from "../utils/ProtectRoutes";
@@ -25,7 +26,12 @@ const SideRoutes: Troutes[] = [
         key: 'sale-history',
         name: 'Sale History',
         element: <ProtectedRoute><SaleHistory /></ProtectedRoute>
-    }
+    },
+    {
+        key: 'bulk-delete',
+        name: 'Bulk Delete',
+        element: <ProtectedRoute><DeletePhone /></ProtectedRoute>
+    },
 ]
 
 export default SideRoutes

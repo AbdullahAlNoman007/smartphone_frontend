@@ -1,11 +1,11 @@
 import { FieldValues, useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useLoginMutation } from "../redux/features/auth/authApi";
 import { toast } from "sonner";
 import { jwtDecode } from "jwt-decode";
 import { Tuser } from "../Types";
 import { useAppDispatch } from "../redux/hook";
 import { setUser } from "../redux/features/auth/authSlicer"
+import { useLoginMutation } from "../redux/features/auth/authApi";
 
 
 const Login = () => {
