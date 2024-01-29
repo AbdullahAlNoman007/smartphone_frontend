@@ -15,4 +15,4 @@ And Also
 
 in the : Frontend\src\redux\api\baseApi.ts
 
-Change the baseQuery's URL 'https://smartphone-backend.vercel.app/api' to 'http://localhost:5000/api'
+Change the baseQuery's URL 'https://smartphone-backend.vercel.app/api' to 'http://localhost:5000/api' if you want to run the backend server locally.

@@ -34,16 +34,16 @@ const PhoneFiltering = () => {
             filters.push(`operatingSystem=${operating}`);
         }
 
-        if (minValue || maxValue) {
-            filters.push(`price=${minValue || 0}-${maxValue || 1000}`);
+        // if (minValue || maxValue) {
+        //     filters.push(`price=${minValue || 0}-${maxValue || 1000}`);
+        // }
+
+        if (storage && storage !== 'GB') {
+            filters.push(`storageCapacity=${storage}`);
         }
 
-        if (storage) {
-            filters.push(`storageCapacity
-            =${storage}`);
-        }
+        if (screen && screen !== ' inches') {
 
-        if (screen) {
             filters.push(`screenSize=${screen}`);
         }
         if (searchTerm) {
@@ -52,14 +52,13 @@ const PhoneFiltering = () => {
         const queryString = filters.join('&');
 
         const url = queryString ? `?${queryString}` : '';
-        console.log(url);
-
 
         return url;
     };
 
     const { data, error } = useGetphoneQuery(constructUrl())
     const phones = data?.data
+    console.log(phones);
     console.log(error);
 
 
@@ -105,10 +104,10 @@ const PhoneFiltering = () => {
                         </select>
                     </label>
                     <div className="flex flex-row gap-1 ">
-                        <input type="text" placeholder="Storage Capacity" className="input input-bordered w-full max-w-sm" onBlur={handleStorageChange} />
+                        <input type="number" placeholder="Storage Capacity" className="input input-bordered w-full max-w-sm" onBlur={handleStorageChange} />
                     </div>
                     <div className="flex flex-row gap-1 ">
-                        <input type="text" placeholder="Screen Size" className="input input-bordered w-full max-w-sm" onBlur={handleScreenChange} />
+                        <input type="number" placeholder="Screen Size" className="input input-bordered w-full max-w-sm" onBlur={handleScreenChange} />
                     </div>
                 </div>
             </form>
